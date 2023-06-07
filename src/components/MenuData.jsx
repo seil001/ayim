@@ -27,5 +27,6 @@ export const MenuData = [
     title: "Sign Up",
     url: "#",
     cName: "nav-links-mobile",
+    // icon: "fa-light fa-user",
   },
 ];

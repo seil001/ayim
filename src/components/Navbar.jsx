@@ -1,32 +1,41 @@
 import React, { useState } from "react";
-import { MenuData } from "./MenuData";
 import "./Navbar.css";
 
 const Navbar = () => {
-  return (
-    <div>
-      <nav className="NavbarItems">
-        <h1 className="logo">
-          Ayim <i class="fa-brands fa-slack"></i>
-        </h1>
-        <div className="menu-icons">
-          <i className="fa-solid fa-bars"></i>
-        </div>
+  const [isOpen, setIsOpen] = useState(false);
 
-        <ul className="nav-menu">
-          {MenuData.map((item, index) => {
-            return (
-              <li key={index}>
-                <a href={item.url} className={item.cName}>
-                  <i className={item.icon}></i>
-                  {item.title}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-    </div>
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <nav className="navbar">
+      <div className="navbar-logo">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLSq5vTjN-zFvPMjNfP7piwSBytSIV8K5M_065rX66&s"
+          alt="Айым"
+        />
+      </div>
+      <ul className={`navbar-links ${isOpen ? "active" : ""}`}>
+        <li>
+          <a href="#">Главная</a>
+        </li>
+        <li>
+          <a href="#">О нас</a>
+        </li>
+        <li>
+          <a href="#">Услуги</a>
+        </li>
+        <li>
+          <a href="#">Контакты</a>
+        </li>
+      </ul>
+      <div className="burger" onClick={toggleMenu}>
+        <div className={`line ${isOpen ? "line-1" : ""}`}></div>
+        <div className={`line ${isOpen ? "line-2" : ""}`}></div>
+        <div className={`line ${isOpen ? "line-3" : ""}`}></div>
+      </div>
+    </nav>
   );
 };
 

@@ -34,15 +34,22 @@
 }
 .navbar-links a {
   text-decoration: none;
-  color: lemonchiffon;
+  color: lightcyan;
 
   font-size: 25px;
 }
 
 .navbar-links a:hover {
-  color: #456;
+  color: wheat;
 }
 
+.auth-reg a {
+  display: flex;
+
+  justify-content: space-between;
+  text-decoration: none;
+  color: rgb(227, 212, 243);
+}
 .burger {
   display: none;
   cursor: pointer;
@@ -63,8 +70,12 @@
 .burger .line-3 {
   transform: rotate(-45deg) translate(5px, -5px);
 }
+
 @media screen and (max-width: 768px) {
   .navbar-links {
+    display: none;
+  }
+  .auth-reg {
     display: none;
   }
   .burger {

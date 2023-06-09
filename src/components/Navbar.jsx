@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import ay3 from "../assets/ay3.jpeg";
+import Registr from "./Registr";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
@@ -13,26 +15,26 @@ const Navbar = () => {
       </div>
       <ul className={`navbar-links ${isOpen ? "active" : ""}`}>
         <li>
-          <a href="#">Главная</a>
+          <Link to="/home">Главная</Link>
         </li>
         <li>
-          <a href="#">О нас</a>
+          <Link to="/about">О нас</Link>
+        </li>
+        {/* <li>
+          <Link to="/specialists">Специалисты</Link>
+        </li> */}
+        <li>
+          <Link to="/forum">Форум</Link>
         </li>
         <li>
-          <a href="#">Специалисты</a>
-        </li>
-        <li>
-          <a href="#">Форум</a>
-        </li>
-        <li>
-          <a href="#">Контакты</a>
-        </li>
-        <li>
-          <a href="#"></a>
+          <Link to="/contacts">Контакты</Link>
         </li>
       </ul>
-      <button className="sign-up">Регистрация</button>
-      <button className="login">Авторизация</button>
+      <div className="auth-reg">
+        <Link to="/reg">Регистрация</Link>
+        <Link to="/sgn-in">Авторизация</Link>
+      </div>
+
       <div className="burger" onClick={toggleMenu}>
         <div className={`line ${isOpen ? "line-1" : ""}`}></div>
         <div className={`line ${isOpen ? "line-2" : ""}`}></div>

@@ -1,27 +1,28 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-
-// import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
-import Reg from "../pages/Reg";
-import About from "../pages/About";
-// import Specialists from "../pages/Specialists";
-import ForumUser from "../pages/ForumUser";
+import About from "../components/About";
 import Contacts from "../pages/Contacts";
 import DetPsy from "../pages/DetPsy";
+import Forum from "../components/Forum";
+import Register from "../pages/Register";
+import Login from "../pages/Login";
+import MainLayout from "../layouts/MainLayout";
+import AddPostPage from "../pages/AddPostPage";
 
 const MainRoutes = () => {
   return (
     <div>
       <Routes>
-        {/* <Route element={<MainLayout />} /> */}
+        <Route element={<MainLayout />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/reg" element={<Reg />} />
         <Route path="/about" element={<About />} />
-        {/* <Route path="/specialists" element={<Specialists />} /> */}
-        <Route path="/forum" element={<ForumUser />} />
+        <Route path="/forum" element={<Forum />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/detskaya-psy" element={<DetPsy />} />
+        <Route path="/add" element={<AddPostPage />} />
+        <Route path="/reg" element={<Register />} />
+        <Route path="/log" element={<Login />} />
       </Routes>
     </div>
   );

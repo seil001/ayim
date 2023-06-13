@@ -32,3 +32,8 @@ body {
 .category-links {
   list-style: none;
 }
+
+forum {
+  display: "flex";
+  align-items: center;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import ay3 from "../assets/ay3.jpeg";
-import Registr from "./Registr";
+
 import { Link } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

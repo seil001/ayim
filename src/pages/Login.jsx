@@ -14,7 +14,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContextProvider";
-
+import styles from "./Home.modul.css";
+import { useState } from "react";
 function Copyright(props) {
   return (
     <Typography
@@ -35,25 +36,30 @@ function Copyright(props) {
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-const defaultTheme = createTheme();
+const theme = createTheme();
 
 export default function Login() {
-  const { login } = useAuth();
+  const { login, register } = useAuth();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [isLogin, setisLogin] = useState(true);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    formData.append("email", email);
-    formData.append("password", password);
+    // formData.append("email", email);
+    // formData.append("password", password);
     // formData.append("password_confirm", password_confirm);
+    let user = {
+      email: email,
+      password: password,
+    };
 
-    login(formData);
+    login(user);
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -68,7 +74,7 @@ export default function Login() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Войти
           </Typography>
           <Box
             component="form"
@@ -100,6 +106,19 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            {!isLogin ? (
+              <>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="name"
+                  label="Name"
+                  name="displayName"
+                  autoFocus
+                />
+              </>
+            ) : null}
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -110,12 +129,12 @@ export default function Login() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Войти
             </Button>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
-                  Forgot password?
+                  Забыли пароль?
                 </Link>
               </Grid>
               <Grid item>

@@ -3,7 +3,9 @@ import "./Navbar.css";
 import ay3 from "../assets/ay3.jpeg";
 
 import { Link } from "react-router-dom";
-const Navbar = () => {
+const adminPages = [{ title: "Category Create", link: "/create-category" }];
+
+const Navbar = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -13,6 +15,7 @@ const Navbar = () => {
       <div className="navbar-logo">
         <img src={ay3} alt="Айым" />
       </div>
+
       <ul className={`navbar-links ${isOpen ? "active" : ""}`}>
         <li>
           <Link to="/home">Главная</Link>
@@ -20,19 +23,22 @@ const Navbar = () => {
         <li>
           <Link to="/about">О нас</Link>
         </li>
-        {/* <li>
-          <Link to="/specialists">Специалисты</Link>
-        </li> */}
         <li>
           <Link to="/forum">Форум</Link>
         </li>
         <li>
           <Link to="/contacts">Контакты</Link>
         </li>
+
+        {/* {user && user.role === "admin" && ( */}
+        <li>
+          <Link to="/admin">Админ</Link>
+        </li>
+        {/* )} */}
       </ul>
       <div className="auth-reg">
         <Link to="/reg">Регистрация</Link>
-        <Link to="/sgn-in">Авторизация</Link>
+        <Link to="/log">Авторизация</Link>
       </div>
 
       <div className="burger" onClick={toggleMenu}>

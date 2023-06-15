@@ -3,7 +3,7 @@ import axios from "axios";
 import { API_CATEGORIES, API_POSTS } from "./const";
 import { useNavigate } from "react-router-dom";
 export const forumContext = createContext();
-export const useForum = () => useContext(useForum);
+export const useForum = () => useContext(forumContext);
 
 const INIT_STATE = {
   posts: [],
@@ -20,7 +20,7 @@ function reducer(state = INIT_STATE, action) {
       return { ...state, onePost: action.payload };
     case "GET_TOTAL_PAGE":
       return { ...state, totalPage: action.payload };
-    case "GET_CATEGORY":
+    case "GET_CATEGORIES":
       return { ...state, category: action.payload };
     default:
       return state;
@@ -71,11 +71,21 @@ const ForumContextProvider = ({ children }) => {
 
   async function getCategories() {
     try {
-      const res = await axios(`${API_CATEGORIES}`);
+      const res = await axios(`${API_CATEGORIES}/`);
       dispatch({
-        type: "GET_CATEGORY",
+        type: "GET_CATEGORIES",
         payload: res.data.results,
       });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function addCategory(post) {
+    try {
+      const config = getAuth();
+      const res = await axios.post(`${API_CATEGORIES}/`, post, config);
+      navigate("/forum");
     } catch (error) {
       console.log(error);
     }
@@ -101,6 +111,7 @@ const ForumContextProvider = ({ children }) => {
     getCategories,
     getPosts,
     getOnePost,
+    addCategory,
   };
   return (
     <div>

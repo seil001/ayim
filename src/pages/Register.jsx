@@ -47,7 +47,7 @@ export default function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // const formData = new FormData(event.currentTarget);
+    const formData = new FormData(event.currentTarget);
     // formData.append("email", email);
     // formData.append("password", password);
     // formData.append("password_confirm", password_confirm);
@@ -78,7 +78,7 @@ export default function Register() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Register
+            Регистрация
           </Typography>
           <Box
             component="form"
@@ -91,7 +91,7 @@ export default function Register() {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="Введите email"
               name="email"
               autoComplete="email"
               autoFocus
@@ -103,7 +103,7 @@ export default function Register() {
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Пароль"
               type="password"
               id="password"
               autoComplete="current-password"
@@ -115,7 +115,7 @@ export default function Register() {
               required
               fullWidth
               name="password_confirm"
-              label="Password-Confirm"
+              label="Подтвердить пароль"
               type="password"
               id="password_confirm"
               autoComplete="current-password"
@@ -127,7 +127,7 @@ export default function Register() {
               required
               fullWidth
               name="username"
-              label="Username"
+              label="Имя пользователя"
               type="username"
               id="username"
               autoComplete="username"
@@ -137,7 +137,7 @@ export default function Register() {
 
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              label="Запомнить"
             />
             <Button
               type="submit"
@@ -145,17 +145,17 @@ export default function Register() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Register
+              Регистрация
             </Button>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
-                  Forgot password?
+                  Забыли пароль?
                 </Link>
               </Grid>
               <Grid item>
                 <Link component={NavLink} to="/log" variant="body2">
-                  {"Have an account? Sign In"}
+                  {"Есть аккаунт? Войти"}
                 </Link>
               </Grid>
             </Grid>

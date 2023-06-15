@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useReducer } from "react";
 import axios from "axios";
-import { API_AUTH } from "./const";
+import { ADMIN, API_AUTH } from "./const";
 import { useNavigate } from "react-router-dom";
 
 const authContext = createContext();
@@ -32,8 +32,7 @@ const AuthContextProvider = ({ children }) => {
     try {
       const res = await axios.post(`${API_AUTH}/register/`, user);
       console.log(res);
-      // console.log(`${API_AUTH}/register/user`);
-
+      // const activate = await axios.get(`${API_AUTH}/`);
       navigate("/log");
     } catch (error) {
       console.log(error, "error");
@@ -79,11 +78,18 @@ const AuthContextProvider = ({ children }) => {
     localStorage.removeItem("token");
     navigate("/log");
   }
+  function isAdmin() {
+    if (state.user) {
+      const bool = ADMIN.includes(state.user.email);
+      return bool;
+    }
+  }
 
   let values = {
     register,
     login,
     logout,
+    isAdmin,
   };
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
 };

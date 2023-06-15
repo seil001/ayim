@@ -1,4 +1,5 @@
 body {
+  width: 800px;
   margin: 100px;
   padding: 80px;
   background-color: rgba(0, 0, 0, 0.4);
@@ -12,6 +13,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   color: beige;
+  width: 50px;
 }
 .category {
   margin: 5px;
